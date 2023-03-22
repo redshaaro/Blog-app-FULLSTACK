@@ -110,3 +110,10 @@
     align-self: flex-end;
     margin-top: 20px;
   }
+  @media only screen and (max-width: 573px) {
+    .singlePostTitleInput{
+      width: 25rem;
+    }
+    
+  
+}

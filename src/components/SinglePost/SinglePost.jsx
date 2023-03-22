@@ -80,7 +80,7 @@ const SinglePost = ({ post }) => {
       </div>
       <div className={styles.body}>{post?.Desc}</div>
       {change && (
-        <button className={styles.singlePostButton} onClick={handleUpdate}>
+        <button style={{fontSize:"2rem"}} className={styles.singlePostButton} onClick={handleUpdate}>
           Update
         </button>
       )}

@@ -1,4 +1,4 @@
-section{
+.section{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,4 +16,10 @@ section{
     font-size: 1.1rem;
     text-align: center;
     margin-top: 1rem;
+}
+@media  (max-width: 573px) {
+    .section {
+      display: none;
+    }
+  
 }

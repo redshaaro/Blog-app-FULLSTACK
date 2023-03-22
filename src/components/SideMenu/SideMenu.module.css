@@ -1,0 +1,32 @@
+.menu {
+    position: fixed;
+    top: 67px;
+    left: 0;
+    bottom: 0;
+    width: 75%;
+    max-width: 300px;
+    background-color: #F9F5EB;
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 2rem;
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .list li {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: black;
+  }
+  

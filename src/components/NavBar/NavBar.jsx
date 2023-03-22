@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import {
@@ -9,7 +9,9 @@ import {
   SearchIcon,
 } from "../../imports/icons";
 
+
 const NavBar = ({ user, dispatch }) => {
+   
   const handleLogOut = () => {
     dispatch({ type: "LOGOUT" });
   };
