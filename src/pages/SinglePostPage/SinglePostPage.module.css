@@ -1,0 +1,14 @@
+.section{
+     
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+     
+}
+.left{
+    width: 80%;
+}
+.right{
+    width: 20%;
+}

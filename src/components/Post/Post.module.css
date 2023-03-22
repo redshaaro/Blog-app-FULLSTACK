@@ -1,0 +1,15 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 5rem;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.img {
+  width: 25rem;
+}

@@ -1,0 +1,27 @@
+.container {
+
+    margin-top: 7rem;
+    margin-left: 4rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+.right {
+    width: 20%;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 2rem;
+    color: black;
+
+}
