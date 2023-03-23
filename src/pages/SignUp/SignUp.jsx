@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import styles from "./SignUp.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../lib/auth";
 
 const SignUp = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setError] = useState(false);
   const [email, setEmail] = useState("");
+  const nav = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    register(username, email, password).then((res) => {
-      console.log(res);
-    });
+    if (username && password && email && password.length >= 8) {
+      register(username, email, password).then((res) => {
+        console.log(res);
+        nav("/login");
+      });
+    } else {
+      setError(true);
+    }
   };
 
   return (
@@ -38,10 +45,15 @@ const SignUp = () => {
         <input
           onChange={(e) => setPassword(e.target.value)}
           className={styles.text}
-          type="text"
+          type="password"
         />
         <input className={styles.btn} type="submit" />
       </form>
+      {err && (
+        <p style={{ fontSize: "2rem", marginTop: "1rem" }}>
+          Don't submit an empty form and make sure password is 8 characters min
+        </p>
+      )}
     </div>
   );
 };

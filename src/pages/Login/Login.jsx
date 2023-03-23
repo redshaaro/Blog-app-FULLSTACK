@@ -6,18 +6,23 @@ import { Link } from "react-router-dom";
 import { login } from "../../lib/auth";
 
 const Login = () => {
-  const { dispatch,isFetching } = useContext(Context);
+  const { dispatch, isFetching } = useContext(Context);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setError] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
-    try {
-      login(username, password).then((res) => {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.user });
-      });
-    } catch (err) {
-      dispatch({ type: "LOGIN_FAILED" });
+    if (username && password) {
+      dispatch({ type: "LOGIN_START" });
+      try {
+        login(username, password).then((res) => {
+          dispatch({ type: "LOGIN_SUCCESS", payload: res.data.user });
+        });
+      } catch (err) {
+        dispatch({ type: "LOGIN_FAILED" });
+      }
+    } else {
+      setError(true);
     }
   };
 
@@ -44,6 +49,11 @@ const Login = () => {
         />
         <input className={styles.btn} type="submit" disabled={isFetching} />
       </form>
+      {err && (
+        <p style={{ fontSize: "2rem", marginTop: "1rem" }}>
+          Don't submit an empty form and check your credentials
+        </p>
+      )}
     </div>
   );
 };
