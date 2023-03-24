@@ -15,11 +15,10 @@ const Login = () => {
     if (username && password) {
       dispatch({ type: "LOGIN_START" });
       try {
-        login(username, password).then((res) => {
-          dispatch({ type: "LOGIN_SUCCESS", payload: res.data.user });
-        });
+        const res = await login(username, password);
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.user });
       } catch (err) {
-        dispatch({ type: "LOGIN_FAILED" });
+        dispatch({ type: "LOGIN_FAILED", error: err.message });
       }
     } else {
       setError(true);
@@ -45,13 +44,14 @@ const Login = () => {
         <input
           onChange={(e) => setPassword(e.target.value)}
           className={styles.text}
-          type="text"
+          type="password"
+          placeholder="Password"
         />
         <input className={styles.btn} type="submit" disabled={isFetching} />
       </form>
       {err && (
         <p style={{ fontSize: "2rem", marginTop: "1rem" }}>
-          Don't submit an empty form and check your credentials
+          Please enter a valid username and password.
         </p>
       )}
     </div>

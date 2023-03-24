@@ -1,8 +1,8 @@
 import "./settings.css";
 import { useContext, useState } from "react";
-import { About } from "../../imports/components";
+
 import { Context } from "../../context/Context";
-import axios from "axios";
+
 import AxiosClient from "../../AxiosClient/AxiosClient";
 
 export default function Settings() {
@@ -17,6 +17,7 @@ export default function Settings() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(user._id);
     dispatch({ type: "UPDATE_START" });
     const updatedUser = {
       userId: user._id,
@@ -26,11 +27,13 @@ export default function Settings() {
     };
 
     try {
-      const res = await AxiosClient.put("/users/" + user._id, updatedUser);
+      const res = await AxiosClient.put(`/users/${user?._id}`, updatedUser);
+
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {
       dispatch({ type: "UPDATE_FAILURE" });
+      console.log(err);
     }
   };
   return (
